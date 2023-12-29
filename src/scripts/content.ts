@@ -2,7 +2,7 @@
 
 function injectHTMLCode() {
   console.debug('injectHTML() called');
-  
+
   const codeBlocks = document.querySelectorAll('pre div code.language-html');
   codeBlocks.forEach(codeBlock => {
     const rawHTML = codeBlock.textContent;
@@ -32,9 +32,9 @@ function injectHTMLCode() {
 
     let blob = new Blob([iframeContent], { type: 'text/html' });
     let url = URL.createObjectURL(blob);
-  
+
     iframe.src = url;
-  
+
     // Clean up the blob URL after the iframe has loaded
     iframe.onload = () => {
       URL.revokeObjectURL(url);
