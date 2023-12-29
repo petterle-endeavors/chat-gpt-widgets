@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "HTML Code Block Injector",
+  "version": "1.0",
+  "permissions": ["activeTab", "scripting", "declarativeNetRequest"],
+  "host_permissions": [
+    "https://chat.openai.com/*"
+  ],
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://chat.openai.com/*"],
+      "js": ["scripts/content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
+
